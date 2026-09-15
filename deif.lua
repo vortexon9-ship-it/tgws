@@ -1256,23 +1256,25 @@ end end end
 function autoplay()
   local offset_auto = 0x7B1E40
   if status_auto == nil then
-    local patch = {
+    -- Передаем массив таблиц в классическом виде, понятном Game Guardian
+    gg.setValues({
+      [1] = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xD65F03C052800020
-    }
-    -- Оборачиваем в фигурные скобки, создавая массив списков для GG
-    gg.setValues({ patch }) 
+      }
+    })
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    local restore = {
+    -- Восстановление оригинальных байт при выключении
+    gg.setValues({
+      [1] = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xF44F01A9FD7B01A9
-    }
-    -- Оборачиваем в фигурные скобки, создавая массив списков для GG
-    gg.setValues({ restore })
+      }
+    })
     status_auto = nil
     gg.toast("Auto Play : [OFF]")
   end
