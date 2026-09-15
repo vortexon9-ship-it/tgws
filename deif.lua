@@ -1256,7 +1256,6 @@ end end end
 function autoplay()
   local offset_auto = 0x7B1E40
   if status_auto == nil then
-    -- Передаем массив таблиц в классическом виде, понятном Game Guardian
     gg.setValues({
       [1] = {
         address = v5 + offset_auto,
@@ -1267,12 +1266,11 @@ function autoplay()
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    -- Восстановление оригинальных байт при выключении
     gg.setValues({
       [1] = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
-        value = 0xF44F01A9FD7B01A9
+        value = 0xA9014FF4A9BC7BFD -- Исправленный оригинал для 2.46.0
       }
     })
     status_auto = nil
