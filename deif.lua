@@ -1252,10 +1252,10 @@ gg.toast(ON.."Enabled [ HIT COMBO ]")
 end end end 
 
 --█████████████████████
+
 function autoplay()
   local offset_auto = 0x7B1E40
   if status_auto == nil then
-    -- Создаем правильную таблицу для GG
     local patch = {}
     patch[1] = {
         address = v5 + offset_auto,
@@ -1266,7 +1266,6 @@ function autoplay()
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    -- Восстановление оригинального кода игры при выключении
     local restore = {}
     restore[1] = {
         address = v5 + offset_auto,
@@ -1278,6 +1277,7 @@ function autoplay()
     gg.toast("Auto Play : [OFF]")
   end
 end
+
 --█████████████████████
 function dumb()
 if DA == ON then DA=OFF
