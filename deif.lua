@@ -1256,23 +1256,23 @@ end end end
 function autoplay()
   local offset_auto = 0x7B1E40
   if status_auto == nil then
-    local patch = {}
-    patch[1] = {
+    local patch = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xD65F03C052800020
     }
-    gg.setValues(patch)
+    -- Оборачиваем в фигурные скобки, создавая массив списков для GG
+    gg.setValues({ patch }) 
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    local restore = {}
-    restore[1] = {
+    local restore = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xF44F01A9FD7B01A9
     }
-    gg.setValues(restore)
+    -- Оборачиваем в фигурные скобки, создавая массив списков для GG
+    gg.setValues({ restore })
     status_auto = nil
     gg.toast("Auto Play : [OFF]")
   end
