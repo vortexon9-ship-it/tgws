@@ -1259,7 +1259,7 @@ function autoplay()
   if status_auto == nil then
     -- Записываем машинный код (MOV W0, #1 + RET), который заставит функцию всегда отвечать "Да"
     gg.setValues({{
-        address = lib + offset_auto,
+        address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xD65F03C052800020
     }})
@@ -1269,7 +1269,7 @@ function autoplay()
     -- Чтобы выключить функцию, восстанавливаем оригинальные инструкции игры
     -- (Оригинальные первые две инструкции этого метода из дампа)
     gg.setValues({{
-        address = lib + offset_auto,
+        address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xF44F01A9FD7B01A9
     }})
