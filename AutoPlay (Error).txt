@@ -1,0 +1,42 @@
+Скрипт завершен:
+Script By Lê Thị Chín 
+=========================
+Game : Shadow Fight 2
+arm64-v8a  v(2.46.0)
+
+
+Ошибка скрипта: luaj.o: /storage/emulated/0/Documents/Shadow_Fight_2.lua:886
+`v15("LOL!133O00028O00026O00F03F03013O007603023O002O67030D3O00676574546172676574496E666F2O033O0078363403043O007862697403093O0...`
+bad argument for key 'address': long expected, got string (field 'getValues')
+level = 1, const = 61, proto = 0, upval = 2, vars = 9, code = 234
+CALL v3..v4 v3..v3
+ ; PC 20 CODE 010080DD OP 29 A 3 B 2 C 2 Bx 1026 sBx -130045
+stack traceback:
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:886 in function 'gg.checkAddress'
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:886 in function 'gg.getAddress'
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:886 in function 'gg.memoryPatch'
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:1270 in function 'autoplay'
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:973 in function 'START'
+	/storage/emulated/0/Documents/Shadow_Fight_2.lua:1310 in main chunk
+	[Java]: in ?
+	at android.ext.Script.a(src:5646)
+	at android.ext.Script.b(src:5687)
+	at android.ext.Script.a(src:5559)
+	at android.ext.Script$getValues.b(src:4112)
+	at android.ext.Script$ApiFunction.a_(src:1393)
+	at luaj.lib.VarArgFunction.a(src:58)
+	at luaj.LuaClosure.a(src:538)
+	at luaj.LuaClosure.a(src:176)
+	at luaj.LuaClosure.a(src:539)
+	at luaj.LuaClosure.a(src:186)
+	at luaj.LuaClosure.a(src:536)
+	at luaj.LuaClosure.a(src:207)
+	at luaj.LuaClosure.a_(src:195)
+	at luaj.LuaClosure.a(src:544)
+	at luaj.LuaClosure.l(src:160)
+	at luaj.LuaClosure.a(src:533)
+	at luaj.LuaClosure.l(src:160)
+	at luaj.LuaClosure.a(src:533)
+	at luaj.LuaClosure.l(src:160)
+	at android.ext.Script.d(src:6056)
+	at android.ext.Script$ScriptThread.run(src:5785)
