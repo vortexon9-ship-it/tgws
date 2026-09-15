@@ -914,7 +914,7 @@ K = 0xAAC510
 L = 0xAAD730
 M = 0xC147B0
 N = 0xC14950
-O = 0xD54750 
+O = 0x7B1E40
 P = 0x1212450
 
 -- Target Lib
@@ -1253,24 +1253,30 @@ end end end
 
 --█████████████████████
 function autoplay()
-if AP == ON then AP=OFF
-gg.revertMemoryPatch('auto') 
-gg.sleep(500)
-gg.toast(OFF.."Disabled [ AUTO PLAY ]") 
-else 
-
-AP = ON
-if APA then 
-gg.memoryPatch('auto',O,1,int) 
- gg.sleep(200)
-gg.toast(ON.."Enabled [ AUTO PLAY ]") 
-else 
-
-APA = true  
-gg.memoryPatch('auto',O,1,int) 
- gg.sleep(200)
-gg.toast(ON.."Enabled [ AUTO PLAY ]") 
-end end end 
+  -- Наш новый точный офсет функции get_IsAutoPlay
+  local offset_auto = 0x7B1E40 
+  
+  if status_auto == nil then
+    -- Записываем машинный код (MOV W0, #1 + RET), который заставит функцию всегда отвечать "Да"
+    gg.setValues({{
+        address = lib + offset_auto,
+        flags = gg.TYPE_QWORD,
+        value = 0xD65F03C052800020
+    }})
+    status_auto = 1
+    gg.toast("Auto Play : [ON]")
+  else
+    -- Чтобы выключить функцию, восстанавливаем оригинальные инструкции игры
+    -- (Оригинальные первые две инструкции этого метода из дампа)
+    gg.setValues({{
+        address = lib + offset_auto,
+        flags = gg.TYPE_QWORD,
+        value = 0xF44F01A9FD7B01A9
+    }})
+    status_auto = nil
+    gg.toast("Auto Play : [OFF]")
+  end
+end
 
 --█████████████████████
 function dumb()
