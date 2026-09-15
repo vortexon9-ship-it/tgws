@@ -5,14 +5,14 @@ Game : Shadow Fight 2
 arm64-v8a  v(2.46.0)
 
 
-Ошибка скрипта: luaj.o: /storage/emulated/0/Pictures/Shadow_Fight_2.lua:1260
+Ошибка скрипта: luaj.o: /storage/emulated/0/Pictures/Shadow_Fight_2.lua:1261
 `        address = v5 + offset_auto,`
 attempt to perform arithmetic __add on a function value and a number value (upvalue 'v5')
-level = 1, const = 15, proto = 0, upval = 2, vars = 5, code = 44
-ADD v2 v2 v0
- ; PC 6 CODE 0100008D OP 13 A 2 B 2 C 0 Bx 1024 sBx -130047
+level = 1, const = 15, proto = 0, upval = 2, vars = 5, code = 42
+ADD v4 v4 v0
+ ; PC 9 CODE 0200010D OP 13 A 4 B 4 C 0 Bx 2048 sBx -129023
 stack traceback:
-	/storage/emulated/0/Pictures/Shadow_Fight_2.lua:1260 in function 'autoplay'
+	/storage/emulated/0/Pictures/Shadow_Fight_2.lua:1261 in function 'autoplay'
 	/storage/emulated/0/Pictures/Shadow_Fight_2.lua:973 in function 'START'
 	/storage/emulated/0/Pictures/Shadow_Fight_2.lua:1316 in main chunk
 	[Java]: in ?
