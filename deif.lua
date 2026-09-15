@@ -1256,23 +1256,14 @@ end end end
 function autoplay()
   local offset_auto = 0x7B1E40
   if status_auto == nil then
-    gg.setValues({
-      [1] = {
-        address = v5 + offset_auto,
-        flags = gg.TYPE_QWORD,
-        value = 0xD65F03C052800020
-      }
-    })
+    -- Записываем MOV W0, #1 + RET напрямую через memoryPatch
+    -- Используем тип QWORD, чтобы прописать 8 байт кода за раз
+    gg.memoryPatch('libil2cpp.so', offset_auto, 0xD65F03C052800020, gg.TYPE_QWORD)
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    gg.setValues({
-      [1] = {
-        address = v5 + offset_auto,
-        flags = gg.TYPE_QWORD,
-        value = 0xA9014FF4A9BC7BFD -- Исправленный оригинал для 2.46.0
-      }
-    })
+    -- Восстанавливаем оригинальные байты игры для версии 2.46.0
+    gg.memoryPatch('libil2cpp.so', offset_auto, 0xA9014FF4A9BC7BFD, gg.TYPE_QWORD)
     status_auto = nil
     gg.toast("Auto Play : [OFF]")
   end
