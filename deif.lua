@@ -1253,31 +1253,31 @@ end end end
 
 --█████████████████████
 function autoplay()
-  -- Наш новый точный офсет функции get_IsAutoPlay
-  local offset_auto = 0x7B1E40 
-  
+  local offset_auto = 0x7B1E40
   if status_auto == nil then
-    -- Записываем машинный код (MOV W0, #1 + RET), который заставит функцию всегда отвечать "Да"
-    gg.setValues({{
+    -- Создаем правильную таблицу для GG
+    local patch = {}
+    patch[1] = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xD65F03C052800020
-    }})
+    }
+    gg.setValues(patch)
     status_auto = 1
     gg.toast("Auto Play : [ON]")
   else
-    -- Чтобы выключить функцию, восстанавливаем оригинальные инструкции игры
-    -- (Оригинальные первые две инструкции этого метода из дампа)
-    gg.setValues({{
+    -- Восстановление оригинального кода игры при выключении
+    local restore = {}
+    restore[1] = {
         address = v5 + offset_auto,
         flags = gg.TYPE_QWORD,
         value = 0xF44F01A9FD7B01A9
-    }})
+    }
+    gg.setValues(restore)
     status_auto = nil
     gg.toast("Auto Play : [OFF]")
   end
 end
-
 --█████████████████████
 function dumb()
 if DA == ON then DA=OFF
